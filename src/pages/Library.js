@@ -16,7 +16,7 @@ const clientId = "9b8dc26145a04920ac05e65bea4a7f4a";
 const clientSecret = "2596ccd0a70446a88f930e04d2c40373";
 const baseURI = "https://api.spotify.com/v1";
 
-function Homepage() {
+function ArtistSearch() {
   const [searchInput, setSearchInput] = useState(""); //^ empty string
   const [accessToken, setAccessToken] = useState(""); //^ empty string
   const [artistData, setArtistData] = useState([]); //^ empty array
@@ -38,7 +38,7 @@ function Homepage() {
     fetch("https://accounts.spotify.com/api/token", param)
       //^ "then" catch the promise that fetch gives me
       .then((results) => results.json())
-      .then((data) => setAccessToken(data.access_token));    
+      .then((data) => setAccessToken(data.access_token));
   }, []);
   //~--------------------------------------------------------------------------------
   //^Search
@@ -91,6 +91,7 @@ function Homepage() {
   return (
     <div>
       <Container>
+      <h2>Library</h2>
         <InputGroup className="mb-3" size="lg">
           <FormControl
             placeholder="Search for artist..."
@@ -125,7 +126,7 @@ function Homepage() {
               {relatedArtists.map((artist, i) => {
                 return (
                   <Figure
-                    href="#"
+                    key={i}
                     style={styles.relatedArtistImgContainer}
                     className="text-center figure"
                   >
@@ -168,7 +169,7 @@ function Homepage() {
                   </Card>
                 );
               })}
-            </Row>          
+            </Row>
           </div>
         )}
       </Container>
@@ -176,7 +177,7 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default ArtistSearch;
 
 const styles = {
   artistImage: {
