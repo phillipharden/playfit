@@ -70,7 +70,7 @@ function ArtistSearch() {
   return (
     <div>
       <Container>
-      <h2>Search</h2>
+      <h2 className="brand-font">Search</h2>
         <InputGroup className="mb-3" size="lg">
           <FormControl
             placeholder="What would you like to jam?!"

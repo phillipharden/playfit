@@ -5,7 +5,7 @@ function Home() {
 
   return (
     <div>
-        <h2>Welcome to Spotify Remix</h2>
+        <h2 className="brand-font m-5">Welcome to Spotify Remix</h2>
     </div>
   );
 }

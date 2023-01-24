@@ -2,7 +2,7 @@ import React from "react";
 // import { SidebarLinks } from "./SidebarLinks";
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaDumbbell } from "react-icons/fa";
 import { MdLibraryMusic } from "react-icons/md";
 
 const Sidebar = (props) => {
@@ -10,13 +10,9 @@ const Sidebar = (props) => {
     <div style={styles.sidebar}>
       <div style={styles.brand}>
         <img src={props.ImgUrl} alt={props.ImgAlt} style={styles.logo} />
-        <h1 style={styles.title}>{props.Title}</h1>
       </div>
       <Link to="/Home" style={styles.link}>
         <AiFillHome style={styles.icon} /> Home
-      </Link>
-      <Link to="/Search" style={styles.link}>
-        <FaSearch style={styles.icon} /> Search
       </Link>
       <Link to="/ArtistSearch" style={styles.link}>
         <FaSearch style={styles.icon} /> Search Artist
@@ -29,6 +25,9 @@ const Sidebar = (props) => {
       </Link>
       <Link to="/Library" style={styles.link}>
         <MdLibraryMusic style={styles.icon} /> Library
+      </Link>
+      <Link to="/Exercises" style={styles.link}>
+        <FaDumbbell style={styles.icon} /> Exercises
       </Link>
     </div>
   );
@@ -54,7 +53,7 @@ const styles = {
     marginBottom: "25px",
   },
   logo: {
-    width: "44px",
+    width: "200px",
   },
   title: {
     fontSize: "22px",
@@ -63,7 +62,7 @@ const styles = {
   link: {
     textDecoration: "none",
     color: "black",
-    padding: "5px 0",
+    padding: "12px 0",
     fontSize: "16px",
   },
   icon: {

@@ -91,10 +91,10 @@ function ArtistSearch() {
   return (
     <div>
       <Container>
-      <h1>Search by Artist</h1>
+        <h1 className="brand-font">Search by Artist</h1>
         <InputGroup className="mb-3" size="lg">
           <FormControl
-            placeholder="Search for artist..."
+            placeholder="Search for an artist..."
             type="input"
             onKeyPress={(event) => {
               if (event.key == "Enter") {
@@ -109,18 +109,18 @@ function ArtistSearch() {
       {/* Display the searched Artists Img and Name */}
       <Container>
         {artistData != "" && (
-          <div style={styles.artistInfo} className="mx-auto text-center">
+          <div style={styles.artistInfo} className="mx-auto">
             <h2>{artistData && artistData.name}</h2>
-            <div className="text-center">
+            <div className="">
               <img
-                src={artistData && artistData.images[0].url}
+                src={artistData.images[0].url}
                 style={styles.artistImage}
                 className="fluid rounded-circle"
               />
             </div>
 
-            <p className="text-center h4 pt-5 pb-2">
-              Here are some artists similar to {artistData && artistData.name}
+            <p className="brand-font h4 pt-5 pb-2">
+              Here are some artists similar to {artistData.name}
             </p>
             <Row className="mx-2 row row-cols-5">
               {relatedArtists.map((artist, i) => {
@@ -144,9 +144,17 @@ function ArtistSearch() {
                 );
               })}
             </Row>
-            <p className="pt-5 pb-2 h4">
-              Check out these great albums from {artistData && artistData.name}
-            </p>
+          </div>
+        )}
+      </Container>
+
+      <Container>
+        {albums != "" && (
+          <div>
+            <p className="brand-font pt-5 pb-2 h4">
+        Check out these albums from {artistData.name}
+      </p>
+
             <Row className="mx-2 row row-cols-6">
               {albums.map((album, i) => {
                 return (
@@ -208,3 +216,5 @@ const styles = {
 //~ Purple (~)
 //todo Mustard (todo)
 // Grey (//)
+
+

@@ -5,6 +5,7 @@ import {
   InputGroup,
   FormControl,
   Button,
+  ListGroup,
   Row,
   Card,
   Figure,
@@ -46,6 +47,7 @@ function AlbumSearch() {
     console.log(`Searched for ${searchInput}`);
 
     //?-search albums---------------------------------------------------------------
+    //^ Get the album ID
     var searchParam = {
       method: "GET",
       headers: {
@@ -54,23 +56,36 @@ function AlbumSearch() {
       },
     };
 
-    var artistID = await fetch(
+    var albumID = await fetch(
       `${baseURI}/search?q=${searchInput}&type=album`,
       searchParam
     )
       .then((response) => response.json())
       .then((data) => {
         setAlbum(data.albums.items[0]);
-        return data.albums.items[0].id; //^ Takes the first artist found
+        console.log(data.albums.items[0].id)
+        return data.albums.items[0].id; //^ Takes the first album found
       });
+
+      var albumTracks = await fetch(
+        `${baseURI}/albums/${albumID}/tracks?include_groups=album&market=US&limit=40`,
+        searchParam
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setTracks(data.items);
+        });
+
+
+
   }
   //^ <<<<<<<<<<<<<<<<<<<<<<<<<<<< end of search() function
-  console.log(album);
+  console.log(tracks);
 
   return (
     <Container>
       <div>
-        <h1>Search by Album</h1>
+        <h1 className="brand-font">Search by Album</h1>
         <InputGroup className="mb-3" size="lg">
           <FormControl
             placeholder="Search for an album..."
@@ -80,7 +95,7 @@ function AlbumSearch() {
                 search();
               }
             }}
-            onChange={(event) => setSearchInput(event.target.value)}
+            onChange={(event) => setSearchInput(event.target.value.toLowerCase())}
           />
           <Button onClick={search}>Search</Button>
         </InputGroup>
@@ -102,6 +117,24 @@ function AlbumSearch() {
           </div>
         )}
       </div>
+       {/* Display Other Songs */}  
+       {album != "" &&(
+        <div>
+        <h2 className="brand-font h4 mx-3">Album Tracks</h2>
+          <ListGroup className="mt-3">
+            {tracks.map((track, i) => {
+              return (
+                <ListGroup.Item style={styles.similarSongInfo} className="d-flex">
+                  <div style={styles.songInfoText}>
+                    <h2 className="h6">{track.track_number}. {track.name}</h2>                
+                    
+                  </div>
+                </ListGroup.Item>
+              );
+            })}
+          </ListGroup>
+        </div>
+      )} 
     </Container>
   );
 }

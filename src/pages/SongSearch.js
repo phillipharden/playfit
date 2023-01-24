@@ -8,6 +8,7 @@ import {
   Row,
   Card,
   Figure,
+  ListGroup,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
@@ -19,8 +20,8 @@ const baseURI = "https://api.spotify.com/v1";
 function SongSearch() {
   const [searchInput, setSearchInput] = useState(""); //^ empty string
   const [accessToken, setAccessToken] = useState(""); //^ empty string
-  const [artistData, setArtistData] = useState([]); //^ empty array
   const [song, setSong] = useState([]); //^ empty array
+  const [otherSongs, setOtherSongs] = useState([]); //^ empty
 
   //^ useEffect function to get the initial access token and not create an endless loop
   useEffect(() => {
@@ -44,7 +45,7 @@ function SongSearch() {
   async function search() {
     console.log(`Searched for ${searchInput}`);
 
-    //?-search artists---------------------------------------------------------------
+    //?-search songs---------------------------------------------------------------
     //^ Get the artist ID
     var searchParam = {
       method: "GET",
@@ -54,7 +55,7 @@ function SongSearch() {
       },
     };
 
-    var artistID = await fetch(
+    var searchSong = await fetch(
       `${baseURI}/search?q=${searchInput}&type=track`,
       searchParam
     )
@@ -62,8 +63,17 @@ function SongSearch() {
       .then((data) => {
         console.log(data);
         setSong(data.tracks.items[0]);
+
+        const simSongs = data.tracks.items.filter(myFunction);
+        function myFunction(value, index, array) {
+          return index > 0;
+        }
+        console.log(simSongs);
+
+        setOtherSongs(simSongs);
+
         // setArtistData(data.artists.items[0]);
-        // return data.artists.items[0].id; //^ Takes the first artist found
+        // return data.artists.items[0].id;
       });
   }
   //^ <<<<<<<<<<<<<<<<<<<<<<<<<<<< end of search() function
@@ -72,7 +82,7 @@ function SongSearch() {
   return (
     <div>
       <Container>
-        <h1>Search by Song</h1>
+        <h1 className="brand-font">Search by Song</h1>
         <InputGroup className="mb-3" size="lg">
           <FormControl
             placeholder="Search for song..."
@@ -88,24 +98,56 @@ function SongSearch() {
         </InputGroup>
       </Container>
       {/* Display the searched Song Img and Name */}
-      <div>
+      <div className="">
         {song != "" && (
-          <div style={styles.songInfo}>
-            <div>
-              <img
-                src={song && song.album.images[0].url}
-                style={styles.artistImage}
-                className="fluid"
-              />
-            </div>
-            <div style={styles.songInfoText}>
-              <h2>{song && song.name}</h2>
-              <p>by {song.artists[0].name}</p>
-              <p>from the album {song.album.name}</p>
+          <div style={styles.songInfo} className="d-flex flex-column">
+            <h2 className="brand-font h1 mx-3">Top Result</h2>
+            <div className="m-3 d-inline-flex flex-row">
+              <div>                
+                <div>
+                  <img
+                    src={song && song.album.images[0].url}
+                    style={styles.topResultAlbumImage}
+                    className="fluid"
+                  />
+                </div>
+              </div>
+              <div style={styles.songInfoText}>
+                <h2>{song && song.name}</h2>
+                <p>by {song.artists[0].name}</p>
+                <p>from the album {song.album.name}</p>
+              </div>
             </div>
           </div>
         )}
       </div>
+      {/* Display Other Songs */}  
+      {song != "" &&(
+        <div>
+        <h2 className="brand-font h4 mx-3">More Songs</h2>
+          <ListGroup className="mt-3">
+            {otherSongs.map((song, i) => {
+              return (
+                <ListGroup.Item style={styles.similarSongInfo} className="d-flex">
+                  <div>
+                    <img
+                      src={song && song.album.images[0].url}
+                      style={styles.albumImage}
+                      className="fluid"
+                    />
+                  </div>
+                  <div style={styles.songInfoText}>
+                    <h2 className="h6">{song && song.name}</h2>
+                    <p>by {song.artists[0].name}</p>
+                    <p>from the album {song.album.name}</p>
+                  </div>
+                </ListGroup.Item>
+              );
+            })}
+          </ListGroup>
+        </div>
+      )}    
+      
     </div>
   );
 }
@@ -113,9 +155,13 @@ function SongSearch() {
 export default SongSearch;
 
 const styles = {
-  artistImage: {
-    width: "250px",
-    height: "250px",
+  topResultAlbumImage: {
+    width: "200px",
+    height: "200px",
+  },
+  albumImage: {
+    width: "100px",
+    height: "100px",
   },
   artistText: {
     fontSize: "20px",

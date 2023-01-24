@@ -1,6 +1,8 @@
 import React from "react";
 //? -----REACT-ROUTER----------------------------------------------------------------
 import { Routes, Route } from "react-router-dom";
+//? -----CSS-------------------------------------------------------------------------
+import "./App.css";
 //? -----PAGES-----------------------------------------------------------------------
 import Home from "./pages/Home";
 import Search from "./pages/Search";
@@ -8,8 +10,9 @@ import Library from "./pages/Library";
 import ArtistSearch from "./pages/ArtistSearch";
 import SongSearch from "./pages/SongSearch";
 import AlbumSearch from "./pages/AlbumSearch";
+import Exercises from "./pages/Exercises";
 //? -----COMPONENTS-------------------------------------------------------------------
-import SpotifyLogo from "./images/spotify_logo_blk.png";
+import SpotifyLogo from "./images/spotify-remix-logo-blk.png";
 import Sidebar from "./components/Sidebar";
 //? -----REACT-BOOTSTRAP--------------------------------------------------------------
 import { Container } from "react-bootstrap";
@@ -17,23 +20,27 @@ import SidebarMenu from "react-bootstrap-sidebar-menu";
 
 function App() {
   const appTitle = "Spotify Remix";
+  
 
   return (
     <div>
       <div style={styles.page}>
         <div style={styles.sidebar}>
-          <Sidebar ImgUrl={SpotifyLogo} ImgAlt="Spotify Logo" Title={appTitle} />
+          <Sidebar
+            ImgUrl={SpotifyLogo}
+            ImgAlt="Spotify Logo"
+            Title={appTitle}
+          />
         </div>
-
         <div style={styles.main}>
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
-            <Route path="/Search" element={<Search />} />
             <Route path="/ArtistSearch" element={<ArtistSearch />} />
             <Route path="/AlbumSearch" element={<AlbumSearch />} />
             <Route path="/SongSearch" element={<SongSearch />} />
             <Route path="/Library" element={<Library />} />
+            <Route path="/Exercises" element={<Exercises/>} />
           </Routes>
         </div>
       </div>
