@@ -6,9 +6,6 @@ import {
   FormControl,
   Button,
   ListGroup,
-  Row,
-  Card,
-  Figure,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
@@ -63,21 +60,18 @@ function AlbumSearch() {
       .then((response) => response.json())
       .then((data) => {
         setAlbum(data.albums.items[0]);
-        console.log(data.albums.items[0].id)
+        console.log(data.albums.items[0].id);
         return data.albums.items[0].id; //^ Takes the first album found
       });
 
-      var albumTracks = await fetch(
-        `${baseURI}/albums/${albumID}/tracks?include_groups=album&market=US&limit=40`,
-        searchParam
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setTracks(data.items);
-        });
-
-
-
+    var albumTracks = await fetch(
+      `${baseURI}/albums/${albumID}/tracks?include_groups=album&market=US&limit=40`,
+      searchParam
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setTracks(data.items);
+      });
   }
   //^ <<<<<<<<<<<<<<<<<<<<<<<<<<<< end of search() function
   console.log(tracks);
@@ -95,7 +89,9 @@ function AlbumSearch() {
                 search();
               }
             }}
-            onChange={(event) => setSearchInput(event.target.value.toLowerCase())}
+            onChange={(event) =>
+              setSearchInput(event.target.value.toLowerCase())
+            }
           />
           <Button onClick={search}>Search</Button>
         </InputGroup>
@@ -104,63 +100,34 @@ function AlbumSearch() {
       {/* Display the searched Album Img and Name */}
       <div>
         {album != "" && (
-          <div style={styles.albumInfo}>
-            <div>
-              <img
-                src={album && album.images[0].url}
-                style={styles.albumImage}
-                className="fluid"
-              />
-              <h2>{album && album.name}</h2>
-              <p>{album.artists[0].name}</p>
-            </div>
+          <div>
+            <img
+              src={album && album.images[0].url}
+              className="album-image fluid"
+            />
+            <p className="h3">{album && album.name}</p>
+            <p>{album.artists[0].name}</p>
           </div>
         )}
       </div>
-       {/* Display Other Songs */}  
-       {album != "" &&(
+      {album != "" && (
         <div>
-        <h2 className="brand-font h4 mx-3">Album Tracks</h2>
+          <h2 className="brand-font h4">Album Tracks</h2>
           <ListGroup className="mt-3">
             {tracks.map((track, i) => {
               return (
-                <ListGroup.Item style={styles.similarSongInfo} className="d-flex">
-                  <div style={styles.songInfoText}>
-                    <h2 className="h6">{track.track_number}. {track.name}</h2>                
-                    
-                  </div>
+                <ListGroup.Item>
+                    <p className="h6">
+                      {track.track_number}. {track.name}
+                    </p>
                 </ListGroup.Item>
               );
             })}
           </ListGroup>
         </div>
-      )} 
+      )}
     </Container>
   );
 }
 
 export default AlbumSearch;
-
-const styles = {
-  albumImage: {
-    width: "250px",
-    height: "250px",
-  },
-  albumText: {
-    fontSize: "20px",
-    fontWeight: "bold",
-  },
-  image: {
-    width: "300px",
-  },
-};
-
-// COLORFUL COMMENTS
-//! Red (!)
-//? Blue (?)
-//* Green (*)
-//^ Yellow (^)
-//& Pink (&)
-//~ Purple (~)
-//todo Mustard (todo)
-// Grey (//)

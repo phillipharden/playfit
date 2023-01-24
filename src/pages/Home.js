@@ -1,36 +1,21 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
 
 function Home() {
-
   return (
-    <div>
-        <h2 className="brand-font m-5">Welcome to Spotify Remix</h2>
-    </div>
+    <Container>
+      <div className="home full-page">
+        <div className="home-header">
+          <h2 className="brand-font">Welcome to Spotify Remix</h2>
+        </div>
+        <div className="home-body">Home body</div>
+      </div>
+    </Container>
   );
 }
 
 export default Home;
-
-const styles = {
-  artistImage: {
-    width: "250px",
-    height: "250px",
-  },
-  artistText: {
-    fontSize: "20px",
-    fontWeight: "bold",
-  },
-  image: {
-    width: "300px",
-  },
-  relatedArtistsImg: {
-    width: "150px",
-    height: "150px",
-    overflow: "hidden",
-    borderRadius: "50%",
-  },
-};
 
 // COLORFUL COMMENTS
 //! Red (!)

@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-const appTitle = "Explore Spotify";
 const clientId = "9b8dc26145a04920ac05e65bea4a7f4a";
 const clientSecret = "2596ccd0a70446a88f930e04d2c40373";
 const baseURI = "https://api.spotify.com/v1";
@@ -89,8 +88,8 @@ function ArtistSearch() {
   console.log(relatedArtists);
 
   return (
-    <div>
-      <Container>
+    <Container>
+      <div>
         <h1 className="brand-font">Search by Artist</h1>
         <InputGroup className="mb-3" size="lg">
           <FormControl
@@ -105,17 +104,16 @@ function ArtistSearch() {
           />
           <Button onClick={search}>Search</Button>
         </InputGroup>
-      </Container>
+      </div>
       {/* Display the searched Artists Img and Name */}
-      <Container>
+      <div>
         {artistData != "" && (
-          <div style={styles.artistInfo} className="mx-auto">
+          <div className="mx-auto">
             <h2>{artistData && artistData.name}</h2>
-            <div className="">
+            <div>
               <img
                 src={artistData.images[0].url}
-                style={styles.artistImage}
-                className="fluid rounded-circle"
+                className="artist-image fluid rounded-circle"
               />
             </div>
 
@@ -125,17 +123,12 @@ function ArtistSearch() {
             <Row className="mx-2 row row-cols-5">
               {relatedArtists.map((artist, i) => {
                 return (
-                  <Figure
-                    key={i}
-                    style={styles.relatedArtistImgContainer}
-                    className="text-center figure"
-                  >
-                    <div style={styles.relatedArtistsImgContainer}>
-                      <Figure.Image
+                  <Figure key={i} className="text-center figure">
+                    <div className="related-artists-img-container">
+                      <img
                         alt="${artist.name} profile picture"
                         src={artist.images[0].url}
-                        className="fluid rounded-circle"
-                        style={styles.relatedArtistsImg}
+                        className="related-artists-img fluid rounded-circle"
                       />
                     </div>
 
@@ -146,31 +139,27 @@ function ArtistSearch() {
             </Row>
           </div>
         )}
-      </Container>
+      </div>
 
-      <Container>
+      <div>
         {albums != "" && (
           <div>
             <p className="brand-font pt-5 pb-2 h4">
-        Check out these albums from {artistData.name}
-      </p>
-
+              Check out these albums from {artistData.name}
+            </p>
             <Row className="mx-2 row row-cols-6">
               {albums.map((album, i) => {
                 return (
-                  <Card style={styles.card} className="card border-light mb-3">
+                  <Card className="card border-light mb-3">
                     <Card.Img src={album.images[0].url} />
                     <Card.Body>
                       <Card.Title className="small">{album.name}</Card.Title>
-                      <Card.Text style={styles.link}>
+                      <Card.Text>
                         {album.release_date.substring(0, 4)}
                       </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                      <Card.Link
-                        href={album.external_urls.spotify}
-                        style={styles.link}
-                      >
+                      <Card.Link href={album.external_urls.spotify}>
                         Listen Now
                       </Card.Link>
                     </Card.Footer>
@@ -180,41 +169,9 @@ function ArtistSearch() {
             </Row>
           </div>
         )}
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 }
 
 export default ArtistSearch;
-
-const styles = {
-  artistImage: {
-    width: "250px",
-    height: "250px",
-  },
-  artistText: {
-    fontSize: "20px",
-    fontWeight: "bold",
-  },
-  image: {
-    width: "300px",
-  },
-  relatedArtistsImg: {
-    width: "150px",
-    height: "150px",
-    overflow: "hidden",
-    borderRadius: "50%",
-  },
-};
-
-// COLORFUL COMMENTS
-//! Red (!)
-//? Blue (?)
-//* Green (*)
-//^ Yellow (^)
-//& Pink (&)
-//~ Purple (~)
-//todo Mustard (todo)
-// Grey (//)
-
-
