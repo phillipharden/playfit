@@ -1,6 +1,7 @@
 import React from "react";
+import { useState, useEffect } from "react";
 //? -----REACT-ROUTER----------------------------------------------------------------
-import {HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 //? -----CSS-------------------------------------------------------------------------
 import "./App.css";
 //? -----PAGES-----------------------------------------------------------------------
@@ -15,17 +16,41 @@ import Exercises from "./pages/Exercises";
 import SpotifyLogo from "./images/spotify-remix-logo-blk.png";
 import Sidebar from "./components/Sidebar";
 //? -----REACT-BOOTSTRAP--------------------------------------------------------------
-import { Container } from "react-bootstrap";
+import { Container, ToggleButton } from "react-bootstrap";
+import Logo from "./images/workout-playlist-logo.png";
+
+import "./darkMode.css";
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 function App() {
+  const [isDarkMode, setDarkMode] = React.useState(false);
 
+  const toggleDarkMode = (checked: boolean) => {
+    setDarkMode(checked);
+  };
+
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    document.body.className = theme;
+  }, [theme]);
   return (
     <div className="page full-page">
       <div>
         <Sidebar
           className="sidebar-main"
-          ImgUrl={SpotifyLogo}
-          ImgAlt="Spotify Logo"
+          ImgUrl={Logo}
+          ImgAlt="Workout Playlist Logo"
+          switchChecked={isDarkMode}
+          switchOnChange={toggleTheme}
+          switchSize={25}
         />
       </div>
       <div className="main">

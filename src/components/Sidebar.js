@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { FaSearch, FaDumbbell } from "react-icons/fa";
 import { MdLibraryMusic } from "react-icons/md";
-//? -----CSS-------------------------------------------------------------------------
-import "../App.css";
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 const Sidebar = (props) => {
   return (
@@ -30,6 +29,13 @@ const Sidebar = (props) => {
       <Link to="/Exercises" className="sidebar-link">
         <FaDumbbell className="sidebar-icon" /> Exercises
       </Link>
+
+      <DarkModeSwitch
+      checked={props.switchChecked}
+      onChange={props.switchOnChange}
+      size={props.switchSize}
+    />
+
     </div>
   );
 };
