@@ -77,7 +77,7 @@ function SongSearch() {
             placeholder="Search for song..."
             type="input"
             onKeyPress={(event) => {
-              if (event.key == "Enter") {
+              if (event.key === "Enter") {
                 search();
               }
             }}

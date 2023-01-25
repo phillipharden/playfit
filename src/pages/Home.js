@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
+import Form from "../components/Form";
 
 function Home() {
   return (
@@ -9,7 +10,9 @@ function Home() {
         <div className="home-header">
           <h2 className="brand-font">Welcome to Spotify Remix</h2>
         </div>
-        <div className="home-body">Home body</div>
+        <div className="home-body">
+          <Form />
+        </div>
       </div>
     </Container>
   );

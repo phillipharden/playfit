@@ -21,14 +21,7 @@
   margin-left: 250px;
 }
 
-/* .sidebar-main {
-  width: 190px; 
-  position: fixed; 
-  margin-left: 410px; 
-} */
-
 /*^ COMPONENTS ****************************************************/
-
 /* Sidebar */
 .sidebar {
   background-color: #ddfff7;
@@ -76,7 +69,6 @@
 } */
 
 /*^ Artist Search ****************************************************/
-
 .artist-image {
   width: 250px;
   height: 250px;

@@ -1,6 +1,6 @@
 import React from "react";
 //? -----REACT-ROUTER----------------------------------------------------------------
-import { Routes, Route } from "react-router-dom";
+import {HashRouter as Router, Routes, Route } from "react-router-dom";
 //? -----CSS-------------------------------------------------------------------------
 import "./App.css";
 //? -----PAGES-----------------------------------------------------------------------
@@ -16,7 +16,6 @@ import SpotifyLogo from "./images/spotify-remix-logo-blk.png";
 import Sidebar from "./components/Sidebar";
 //? -----REACT-BOOTSTRAP--------------------------------------------------------------
 import { Container } from "react-bootstrap";
-import SidebarMenu from "react-bootstrap-sidebar-menu";
 
 function App() {
 

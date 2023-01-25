@@ -32,12 +32,16 @@ function ArtistSearch() {
       },
       body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
     };
-
-    //^ Add ERROR HANDLING to fetch later
+    
     fetch("https://accounts.spotify.com/api/token", param)
       //^ "then" catch the promise that fetch gives me
       .then((results) => results.json())
-      .then((data) => setAccessToken(data.access_token));
+      .then((data) => setAccessToken(data.access_token))
+      .catch(results => {
+        console.error(results)
+      } )
+
+
   }, []);
   //~--------------------------------------------------------------------------------
   //^Search
@@ -62,7 +66,9 @@ function ArtistSearch() {
       .then((data) => {
         setArtistData(data.artists.items[0]);
         return data.artists.items[0].id; //^ Takes the first artist found
-      });
+      }).catch(response => {
+
+      })
 
     // ^ Get request with artist ID for all of the artists albums
     var albums = await fetch(
