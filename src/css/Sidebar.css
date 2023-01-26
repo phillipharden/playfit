@@ -1,0 +1,42 @@
+/* Sidebar */
+.sidebar {
+  flex: 0.1;
+  min-width: 200px;
+  height: 100vh;
+  color: white;
+  background-color: #ddfff7;
+}
+
+.sidebar_body {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+  padding-left: 10px;
+  
+}
+
+.sidebar-logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.sidebar-logo {
+  width: 200px;
+}
+
+.sidebar-icon {
+  font-size: 24px;
+  text-align: center;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: black;
+  padding: 12px 0;
+  font-size: 16px;
+}
+
+

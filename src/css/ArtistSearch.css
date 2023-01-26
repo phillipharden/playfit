@@ -1,0 +1,14 @@
+/*^ Artist Search ****************************************************/
+.artist-image {
+    width: 250px;
+    height: 250px;
+  }
+  .artist-text {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .related-artists-img {
+    width: 150px;
+    height: 150px;
+  }

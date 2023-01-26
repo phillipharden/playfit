@@ -10,6 +10,7 @@ import {
   Figure,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import '../css/ArtistSearch.css';
 
 const clientId = "9b8dc26145a04920ac05e65bea4a7f4a";
 const clientSecret = "2596ccd0a70446a88f930e04d2c40373";

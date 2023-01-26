@@ -1,0 +1,24 @@
+/*^ Song Search ****************************************************/
+.top-result-album-image {
+    width: 200px;
+    height: 200px;
+  }
+  .song-album-image {
+    width: 100px;
+    height: 100px;
+  }
+  .artist-text {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .image {
+    width: 300px;
+  }
+  .song-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .song-info-text {
+    padding-left: 10px;
+  }

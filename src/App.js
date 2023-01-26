@@ -3,11 +3,9 @@ import { useState, useEffect } from "react";
 //? -----REACT-ROUTER----------------------------------------------------------------
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 //? -----CSS-------------------------------------------------------------------------
-import "./App.css";
+import "./css/App.css";
 //? -----PAGES-----------------------------------------------------------------------
 import Home from "./pages/Home";
-import Search from "./pages/Search";
-import Library from "./pages/Library";
 import ArtistSearch from "./pages/ArtistSearch";
 import SongSearch from "./pages/SongSearch";
 import AlbumSearch from "./pages/AlbumSearch";
@@ -19,50 +17,46 @@ import Sidebar from "./components/Sidebar";
 import { Container, ToggleButton } from "react-bootstrap";
 import Logo from "./images/workout-playlist-logo.png";
 
-import "./darkMode.css";
-import { DarkModeSwitch } from 'react-toggle-dark-mode';
+import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 function App() {
-  const [isDarkMode, setDarkMode] = React.useState(false);
+  // const [isDarkMode, setDarkMode] = React.useState(false);
 
-  const toggleDarkMode = (checked: boolean) => {
-    setDarkMode(checked);
-  };
+  // const toggleDarkMode = (checked: boolean) => {
+  //   setDarkMode(checked);
+  // };
 
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.body.className = theme;
-  }, [theme]);
+  // const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  // const toggleTheme = () => {
+  //   if (theme === "light") {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
+  // useEffect(() => {
+  //   localStorage.setItem("theme", theme);
+  //   document.body.className = theme;
+  // }, [theme]);
   return (
-    <div className="page full-page">
-      <div>
-        <Sidebar
-          className="sidebar-main"
-          ImgUrl={Logo}
-          ImgAlt="Workout Playlist Logo"
-          switchChecked={isDarkMode}
-          switchOnChange={toggleTheme}
-          switchSize={25}
-        />
-      </div>
-      <div className="main">
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/ArtistSearch" element={<ArtistSearch />} />
-          <Route path="/AlbumSearch" element={<AlbumSearch />} />
-          <Route path="/SongSearch" element={<SongSearch />} />
-          <Route path="/Library" element={<Library />} />
-          <Route path="/Exercises" element={<Exercises />} />
-        </Routes>
+    <div className="app">
+      <div className="app_body">
+        <div className="main_section">
+          <Sidebar
+            ImgUrl={Logo}
+            ImgAlt="Workout Playlist Logo"
+          />
+          <div className="body">
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/Home" element={<Home />} />
+              <Route path="/ArtistSearch" element={<ArtistSearch />} />
+              <Route path="/AlbumSearch" element={<AlbumSearch />} />
+              <Route path="/SongSearch" element={<SongSearch />} />
+              <Route path="/Exercises" element={<Exercises />} />
+            </Routes>
+          </div>
+        </div>
       </div>
     </div>
   );

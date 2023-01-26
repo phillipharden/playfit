@@ -1,0 +1,8 @@
+/*^ Exercises *****************************************/
+.card-style {
+    margin: 0 5px;
+    box-shadow: 2px 2px 10px gray;
+  }
+  .card-text {
+    font-size: 12px;
+  }

@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { fetchData, searchParam } from "../utils/fetchData";
+import '../css/Exercises.css';
 
 function Exercises() {
   const [searchInput, setSearchInput] = useState("");

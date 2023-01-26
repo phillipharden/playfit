@@ -8,6 +8,7 @@ import {
   ListGroup,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import '../css/AlbumSearch.css';
 
 const appTitle = "Explore Spotify";
 const clientId = "9b8dc26145a04920ac05e65bea4a7f4a";
