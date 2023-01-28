@@ -10,9 +10,12 @@ import ArtistSearch from "./pages/ArtistSearch";
 import SongSearch from "./pages/SongSearch";
 import AlbumSearch from "./pages/AlbumSearch";
 import Exercises from "./pages/Exercises";
+import Search from "./pages/Search";
 //? -----COMPONENTS-------------------------------------------------------------------
 import SpotifyLogo from "./images/spotify-remix-logo-blk.png";
 import Sidebar from "./components/Sidebar";
+import FooterNav from "./components/FooterNav";
+import Header from "./components/Header";
 //? -----REACT-BOOTSTRAP--------------------------------------------------------------
 import { Container, ToggleButton } from "react-bootstrap";
 import Logo from "./images/workout-playlist-logo.png";
@@ -41,21 +44,36 @@ function App() {
   return (
     <div className="app">
       <div className="app_body">
+        <di className="app_header">
+          <Header
+          ImgUrl={Logo}
+          ImgAlt="PlayFit's Logo"
+          Title="PlayFit"
+           />
+
+        </di>
         <div className="main_section">
+          <div className="app_sidebar">
           <Sidebar
             ImgUrl={Logo}
             ImgAlt="Workout Playlist Logo"
           />
+          </div>
+          
           <div className="body">
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
+              <Route path="/Search" element={<Search />} />
               <Route path="/ArtistSearch" element={<ArtistSearch />} />
               <Route path="/AlbumSearch" element={<AlbumSearch />} />
               <Route path="/SongSearch" element={<SongSearch />} />
               <Route path="/Exercises" element={<Exercises />} />
             </Routes>
           </div>
+        </div>
+        <div className ="app_footer_nav">
+<FooterNav />
         </div>
       </div>
     </div>

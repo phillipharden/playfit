@@ -1,10 +1,6 @@
 /* Sidebar */
-.sidebar {
-  flex: 0.1;
-  min-width: 200px;
-  height: 100vh;
-  color: white;
-  background-color: #ddfff7;
+.sidebar {  
+  color: #F5F5F5;
 }
 
 .sidebar_body {
@@ -34,7 +30,7 @@
 
 .sidebar-link {
   text-decoration: none;
-  color: black;
+  color: #F5F5F5;
   padding: 12px 0;
   font-size: 16px;
 }

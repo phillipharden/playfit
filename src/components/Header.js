@@ -1,33 +1,16 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import "../css/Header.css";
 
 const Header = (props) => {
   return (
-    <header style={styles.header}>
-      <Container>
-        <div style={styles.container}>
-          <h1>{props.Title}</h1>
-          <img src={props.ImgUrl} alt={props.ImgAlt} style={styles.logo} />
-        </div>
+      <Container className="header_container">
+        <header>
+          <img src={props.ImgUrl} alt={props.ImgAlt} className="header_logo" />
+          <h1 className="brand_font header_title">{props.Title}</h1>
+        </header>
       </Container>
-    </header>
   );
 };
 
 export default Header;
-
-const styles = {
-  header: {
-    backgroundColor: "#FFFFF0",
-    color: "#1fd760",
-  },
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  logo: {
-    width: "10%",
-  },
-};

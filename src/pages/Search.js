@@ -97,7 +97,7 @@ function ArtistSearch() {
   return (
     <Container>
       <div>
-        <h1 className="brand-font">Search by Artist</h1>
+        <h1 className="brand-font">Search</h1>
         <InputGroup className="mb-3" size="lg">
           <FormControl
             placeholder="Search for an artist..."

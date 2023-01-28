@@ -10,7 +10,8 @@ import {
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { fetchData, searchParam } from "../utils/fetchData";
-import '../css/Exercises.css';
+import "../css/Exercises.css";
+import { FaSearch } from "react-icons/fa";
 
 function Exercises() {
   const [searchInput, setSearchInput] = useState("");
@@ -41,8 +42,9 @@ function Exercises() {
   return (
     <Container>
       <h1 className="brand-font">Exercises</h1>
-      <InputGroup className="mb-3" size="lg">
+      <InputGroup className="input-group mb-1" size="sm">
         <FormControl
+        className="form"
           placeholder="Search for an exercise..."
           type="input"
           onKeyPress={(event) => {
@@ -52,28 +54,28 @@ function Exercises() {
           }}
           onChange={(event) => setSearchInput(event.target.value.toLowerCase())}
         />
-        <Button onClick={handleSearch}>Search</Button>
+        <Button className="search-button" onClick={handleSearch}><FaSearch className="search-icon" /></Button>
       </InputGroup>
 
       {exercises != "" && (
         <div>
-          <Row className="mx-2 row row-cols-5">
+          <p>Here are the results for {searchInput}...</p>
+          <Row>
             {exercises.map((exercise, i) => {
               return (
-                <Card className="card border-light mb-3 card-style">
-                  <Card.Img
-                    src={exercise.gifUrl}
-                    alt="Exercise display"
-                  />
-                  <Card.Body>
-                    <Card.Title className="small">
-                      {exercise.name.toUpperCase()}
-                    </Card.Title>
-                    <Card.Text className="card-text">
-                      This exercise targets the {exercise.target}.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
+                <div className="card-container col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+                  <Card className="card-style h-100">
+                    <Card.Img src={exercise.gifUrl} alt="Visual instructions on how to perform the exercise" />
+                    <Card.Body className="card-body">
+                      <Card.Title className="card-title">
+                        {exercise.name.toUpperCase()}
+                      </Card.Title>
+                      <Card.Text className="card-text">
+                        This exercise targets the {exercise.target}.
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </div>
               );
             })}
           </Row>

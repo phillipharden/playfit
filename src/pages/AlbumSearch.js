@@ -81,7 +81,7 @@ function AlbumSearch() {
     <Container>
       <div>
         <h1 className="brand-font">Search by Album</h1>
-        <InputGroup className="mb-3" size="lg">
+        <InputGroup className="mb-3 search_bar" size="md">
           <FormControl
             placeholder="Search for an album..."
             type="input"
@@ -104,9 +104,9 @@ function AlbumSearch() {
           <div>
             <img
               src={album && album.images[0].url}
-              className="album-image fluid"
+              className="album-image"
             />
-            <p className="h3">{album && album.name}</p>
+            <p className="h3 mt-1">{album && album.name}</p>
             <p>{album.artists[0].name}</p>
           </div>
         )}

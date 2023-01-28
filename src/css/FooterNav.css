@@ -1,0 +1,18 @@
+.footer_nav {
+  height: 50px;
+  background-color: #13293d;
+  color: #bedcfe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_nav_body {
+}
+
+.footer_nav_link {
+  color: #bedcfe;
+}
+
+.footer_nav_icon {
+}

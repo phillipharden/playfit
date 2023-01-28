@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-.brand-font {
+.brand_font {
   font-family: "Architects Daughter", cursive;
 }
 
@@ -21,7 +21,6 @@
   flex-grow: 1;
 }
 
-
 .body {
   padding: 30px;
   width: 100%;
@@ -31,10 +30,46 @@
   color: white;
   background: linear-gradient(transparent, rgba(0, 0, 0, 1));
   background-color: rgb(91, 87, 115);
+  
 }
 
+.app_sidebar {
+  flex: 0.1;
+  min-width: 200px;
+  height: 100vh;
+  background-color: #7161EF;
+}
 
+@media only screen and (max-width: 540px) {
+  .app_sidebar {
+    display: none;
+  }
+  .body {
+    flex: 10;
+    margin-top: 50px;
+    height: 100vh;
+  }  
+}
 
+@media only screen and (min-width: 540px) {
+  .app_footer_nav {
+    display: none;
+  }
+  .app_header {
+    display: none;
+  }
+}
 
+.app_header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
 
-
+.app_footer_nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+}
