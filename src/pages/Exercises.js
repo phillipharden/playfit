@@ -40,7 +40,7 @@ function Exercises() {
   }
 
   return (
-    <Container>
+    <Container className="margin-bottom-55px">
       <h1 className="brand-font">Exercises</h1>
       <InputGroup className="input-group mb-1" size="sm">
         <FormControl

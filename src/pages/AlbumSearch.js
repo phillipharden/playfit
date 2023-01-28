@@ -78,10 +78,10 @@ function AlbumSearch() {
   console.log(tracks);
 
   return (
-    <Container>
+    <Container className="margin-bottom-55px">
       <div>
         <h1 className="brand-font">Search by Album</h1>
-        <InputGroup className="mb-3 search_bar" size="md">
+        <InputGroup className="input-group mb-1" size="sm">
           <FormControl
             placeholder="Search for an album..."
             type="input"
@@ -117,7 +117,7 @@ function AlbumSearch() {
           <ListGroup className="mt-3">
             {tracks.map((track, i) => {
               return (
-                <ListGroup.Item>
+                <ListGroup.Item className="track-list">
                     <p className="h6">
                       {track.track_number}. {track.name}
                     </p>

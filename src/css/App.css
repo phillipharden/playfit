@@ -7,16 +7,16 @@
   margin: 0;
 }
 
-.brand_font {
+.brand-font {
   font-family: "Architects Daughter", cursive;
 }
 
-.app_body {
+.app-body {
   display: flex;
   flex-direction: column;
 }
 
-.main_section {
+.main-section {
   display: flex;
   flex-grow: 1;
 }
@@ -33,7 +33,7 @@
   
 }
 
-.app_sidebar {
+.app-sidebar {
   flex: 0.1;
   min-width: 200px;
   height: 100vh;
@@ -41,7 +41,7 @@
 }
 
 @media only screen and (max-width: 540px) {
-  .app_sidebar {
+  .app-sidebar {
     display: none;
   }
   .body {
@@ -52,24 +52,28 @@
 }
 
 @media only screen and (min-width: 540px) {
-  .app_footer_nav {
+  .app-footer-nav {
     display: none;
   }
-  .app_header {
+  .app-header {
     display: none;
   }
 }
 
-.app_header {
+.app-header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
 }
 
-.app_footer_nav {
+.app-footer-nav {
   position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 1;
+}
+
+.margin-bottom-55px {
+  margin-bottom: 55px;
 }

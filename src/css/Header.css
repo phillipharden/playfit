@@ -4,17 +4,17 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-.header_container {
+.header-container {
     background-color: #13293D;
 
 }
 
-.header_logo {
+.header-logo {
     width: 48px;
     height: 48px;
 }
 
-.header_title {
+.header-title {
     font-size: 30px;
     color:#BEDCFE;
 }

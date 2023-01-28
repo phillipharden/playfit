@@ -1,20 +1,77 @@
-/*^ Artist Search ****************************************************/
-.artist-image {
-  width: 100%;
-    max-width: 250px;
-    height: auto;
-  }
-  .artist-text {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .related-artists-img {
+.artist-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main-artist {
+  width: 300px;
+  height: 300px;
+}
+
+.related-artist {
+  width: 125px;
+  height: 125px;
+}
+.artist-img-container{
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.artist-img {
+  height: 100%;
+  width:100%;
+  object-fit: cover; 
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.album-card {
+  background-color: transparent;
+  border: none;
+}
+
+.album-cover {
+  width: 180px;
+  height: auto;
+}
+
+.card-link {
+  color: white;
+}
+
+/* screens this size and smaller */
+@media only screen and (max-width: 300px) {
+  .main-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  } 
+  .main-artist {
     width: 100%;
-    max-width: 150px;
-    height: auto;
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  
+  .main-artist {
+    width: 75vw;
+    height: 75vw;
   }
 
-  @media only screen and (max-width: 540px) {
-  
+  .related-artist {
+    width: 55vw;
+    height: 55vw;
   }
+  .album-cover {
+    width: 75vw;
+    height: auto;
+  }
+}
+
+
+.test {
+  outline: 5px solid yellow;
+}

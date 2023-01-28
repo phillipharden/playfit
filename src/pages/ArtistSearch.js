@@ -95,10 +95,10 @@ function ArtistSearch() {
   console.log(relatedArtists);
 
   return (
-    <Container>
+    <Container className="main-container margin-bottom-55px">
       <div>
         <h1 className="brand-font">Search by Artist</h1>
-        <InputGroup className="mb-3" size="lg">
+        <InputGroup className="input-group mb-1" size="sm">
           <FormControl
             placeholder="Search for an artist..."
             type="input"
@@ -116,29 +116,30 @@ function ArtistSearch() {
       <div>
         {artistData != "" && (
           <div className="mx-auto">
-            <h2>{artistData && artistData.name}</h2>
-            <div>
+            <h2 className="text-center">{artistData && artistData.name}</h2>
+            <div className="main-artist artist-img-container mx-auto">
               <img
                 src={artistData.images[0].url}
-                className="artist-image fluid rounded-circle"
+                className="artist-img"
               />
             </div>
 
-            <p className="brand-font h4 pt-5 pb-2">
-              Here are some artists similar to {artistData.name}
+
+
+            <p className="brand-font h4 py-2 text-center">
+              Here are some artists similar to {artistData.name}...
             </p>
-            <Row className="mx-2 row col-md-4 col-5">
+            <Row className="mx-2 row">
               {relatedArtists.map((artist, i) => {
                 return (
-                  <Figure key={i} className="text-center figure">
-                    <div className="related-artists-img-container">
+                  <Figure key={i} className="text-center pb-2 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <div className="mx-auto related-artist artist-img-container">
                       <img
-                        alt="${artist.name} profile picture"
+                        alt="Profile picture for ${artist.name}"
                         src={artist.images[0].url}
-                        className="related-artists-img fluid rounded-circle"
+                        className="artist-img"
                       />
                     </div>
-
                     <Figure.Caption>{artist.name}</Figure.Caption>
                   </Figure>
                 );
@@ -151,25 +152,23 @@ function ArtistSearch() {
       <div>
         {albums != "" && (
           <div>
-            <p className="brand-font pt-5 pb-2 h4">
+            <p className="text-center brand-font pt-5 pb-2 h4">
               Check out these albums from {artistData.name}
             </p>
-            <Row className="mx-2 row row-cols-6">
+            <Row className="row m-auto">
               {albums.map((album, i) => {
                 return (
-                  <Card className="card border-light mb-3">
-                    <Card.Img src={album.images[0].url} />
+                  <Card className="album-card col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+                    <Card.Img 
+                    src={album.images[0].url} 
+                    alt="Album cover for {album.name}"
+                    />
                     <Card.Body>
                       <Card.Title className="small">{album.name}</Card.Title>
                       <Card.Text>
                         {album.release_date.substring(0, 4)}
                       </Card.Text>
                     </Card.Body>
-                    <Card.Footer>
-                      <Card.Link href={album.external_urls.spotify}>
-                        Listen Now
-                      </Card.Link>
-                    </Card.Footer>
                   </Card>
                 );
               })}

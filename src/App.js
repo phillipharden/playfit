@@ -43,23 +43,15 @@ function App() {
   // }, [theme]);
   return (
     <div className="app">
-      <div className="app_body">
-        <di className="app_header">
-          <Header
-          ImgUrl={Logo}
-          ImgAlt="PlayFit's Logo"
-          Title="PlayFit"
-           />
-
+      <div className="app-body">
+        <di className="app-header">
+          <Header ImgUrl={Logo} ImgAlt="PlayFit's Logo" Title="PlayFit" />
         </di>
-        <div className="main_section">
-          <div className="app_sidebar">
-          <Sidebar
-            ImgUrl={Logo}
-            ImgAlt="Workout Playlist Logo"
-          />
+        <div className="main-section">
+          <div className="app-sidebar">
+            <Sidebar ImgUrl={Logo} ImgAlt="Workout Playlist Logo" />
           </div>
-          
+
           <div className="body">
             <Routes>
               <Route exact path="/" element={<Home />} />
@@ -72,8 +64,8 @@ function App() {
             </Routes>
           </div>
         </div>
-        <div className ="app_footer_nav">
-<FooterNav />
+        <div className="app-footer-nav">
+          <FooterNav />
         </div>
       </div>
     </div>

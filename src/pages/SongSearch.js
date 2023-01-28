@@ -8,17 +8,17 @@ import {
   ListGroup,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import '../css/SongSearch.css';
+import "../css/SongSearch.css";
 
 const clientId = "9b8dc26145a04920ac05e65bea4a7f4a";
 const clientSecret = "2596ccd0a70446a88f930e04d2c40373";
 const baseURI = "https://api.spotify.com/v1";
 
 function SongSearch() {
-  const [searchInput, setSearchInput] = useState(""); 
-  const [accessToken, setAccessToken] = useState(""); 
-  const [song, setSong] = useState([]); 
-  const [otherSongs, setOtherSongs] = useState([]); 
+  const [searchInput, setSearchInput] = useState("");
+  const [accessToken, setAccessToken] = useState("");
+  const [song, setSong] = useState([]);
+  const [otherSongs, setOtherSongs] = useState([]);
 
   useEffect(() => {
     var param = {
@@ -70,10 +70,10 @@ function SongSearch() {
   console.log(song);
 
   return (
-    <Container>
+    <Container className="margin-bottom-55px">
       <div>
         <h1 className="brand-font">Search by Song</h1>
-        <InputGroup className="mb-3" size="lg">
+        <InputGroup className="input-group mb-1" size="sm">
           <FormControl
             placeholder="Search for song..."
             type="input"
@@ -90,50 +90,58 @@ function SongSearch() {
       <div className="">
         {song != "" && (
           <div className="song-info d-flex flex-column">
-            <h2 className="brand-font h1 mx-3">Top Result</h2>
-            <div className="m-3 d-inline-flex flex-row">
-              <div>                
-                <div>
-                  <img
-                    src={song && song.album.images[0].url}
-                    className="top-result-album-image fluid"
-                  />
-                </div>
+            <h2 className="brand-font h1 my-2">Top Result</h2>
+            <div className="top-result">
+              <div>
+                <img
+                  src={song && song.album.images[0].url}
+                  className="top-result-album-image"
+                />
               </div>
               <div className="song-info-text">
-                <h2>{song && song.name}</h2>
-                <p>by {song.artists[0].name}</p>
-                <p>from the album {song.album.name}</p>
+                <h2 className="d-flex flex-column">
+                  <span className="type">Song</span>
+                  {song && song.name}
+                </h2>
+                <p className="d-flex flex-column">
+                  <span className="type">Artist</span>
+                  {song.artists[0].name}
+                </p>
+                <p className="d-flex flex-column">
+                  <span className="type">Album</span> {song.album.name}
+                </p>
               </div>
             </div>
           </div>
         )}
       </div>
-      {/* Display More Songs */}  
-      {song != "" &&(
+      {/* Display More Songs */}
+      {song != "" && (
         <div>
-        <h2 className="brand-font h4 mx-3">More Songs</h2>
+          <h2 className="brand-font h4 mt-2">More Songs</h2>
           <ListGroup className="mt-3">
             {otherSongs.map((song, i) => {
               return (
-                <ListGroup.Item className=" similar-song-info d-flex">
+                <ListGroup.Item className="more-songs-info d-flex">
                   <div>
                     <img
                       src={song && song.album.images[0].url}
-                      className="song-album-image fluid"
+                      className="song-album-image"
                     />
                   </div>
                   <div className="song-info-text">
-                    <h2 className="h6">{song && song.name}</h2>
-                    <p>by {song.artists[0].name}</p>
-                    <p>from the album {song.album.name}</p>
+                    <h2 className="h6 d-flex flex-column"><span className="type">Artist</span>{song && song.name}</h2>
+                    <p className="d-flex flex-column">
+                  <span className="type">Artist</span>{song.artists[0].name}</p>
+                    <p className="d-flex flex-column">
+                  <span className="type">Album</span>{song.album.name}"</p>
                   </div>
                 </ListGroup.Item>
               );
             })}
           </ListGroup>
         </div>
-      )}          
+      )}
     </Container>
   );
 }

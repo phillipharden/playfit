@@ -1,6 +1,7 @@
 .card-style {
   box-shadow: 2px 2px 10px gray;
-  color: #13293d;  
+  color: #9FFFCB;  
+  background-color: transparent;
 }
 
 /* .card-title {
@@ -34,10 +35,10 @@
  
 /* this will happen on a screen this size and larger */
 @media only screen and (min-width: 540px) {
-  .app_footer_nav {
+  .app-footer-nav {
     display: none;
   }
-  .app_header {
+  .app-header {
     display: none;
   }
 }

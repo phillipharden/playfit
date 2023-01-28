@@ -3,7 +3,7 @@
   color: #F5F5F5;
 }
 
-.sidebar_body {
+.sidebar-body {
   display: flex;
   flex-direction: column;
   width: 200px;

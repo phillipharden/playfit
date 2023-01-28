@@ -1,18 +1,24 @@
-.footer_nav {
+.footer-nav {
   height: 50px;
   background-color: #13293d;
   color: #bedcfe;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.footer_nav_body {
+.footer-nav-body {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.footer_nav_link {
-  color: #bedcfe;
+.footer-nav-icon {
+  width: 30px;
+  height: auto;
+  color: #9fffcb;
 }
 
-.footer_nav_icon {
+.footer-nav-text {
+  display: none;
 }

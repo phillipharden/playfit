@@ -5,51 +5,41 @@ import {
   InputGroup,
   FormControl,
   Button,
-  Row,
-  Card,
-  Figure,
+  ListGroup,
 } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import '../css/ArtistSearch.css';
+import '../css/SongSearch.css';
 
 const clientId = "9b8dc26145a04920ac05e65bea4a7f4a";
 const clientSecret = "2596ccd0a70446a88f930e04d2c40373";
 const baseURI = "https://api.spotify.com/v1";
 
-function ArtistSearch() {
-  const [searchInput, setSearchInput] = useState(""); //^ empty string
-  const [accessToken, setAccessToken] = useState(""); //^ empty string
-  const [artistData, setArtistData] = useState([]); //^ empty array
-  const [albums, setAlbums] = useState([]); //^ empty array
-  const [relatedArtists, setRelatedArtists] = useState([]); //^ empty array
+function Search() {
+  const [searchInput, setSearchInput] = useState(""); 
+  const [accessToken, setAccessToken] = useState(""); 
+  const [song, setSong] = useState([]); 
+  const [otherSongs, setOtherSongs] = useState([]); 
 
-  //^ useEffect function to get the initial access token and not create an endless loop
   useEffect(() => {
     var param = {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        //^ https://developer.spotify.com/documentation/ios/guides/token-swap-and-refresh/
       },
       body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
     };
-    
+
     fetch("https://accounts.spotify.com/api/token", param)
       //^ "then" catch the promise that fetch gives me
       .then((results) => results.json())
-      .then((data) => setAccessToken(data.access_token))
-      .catch(results => {
-        console.error(results)
-      } )
-
-
+      .then((data) => setAccessToken(data.access_token));
   }, []);
   //~--------------------------------------------------------------------------------
   //^Search
   async function search() {
     console.log(`Searched for ${searchInput}`);
 
-    //?-search artists---------------------------------------------------------------
+    //?-search songs---------------------------------------------------------------
     //^ Get the artist ID
     var searchParam = {
       method: "GET",
@@ -59,51 +49,36 @@ function ArtistSearch() {
       },
     };
 
-    var artistID = await fetch(
-      `${baseURI}/search?q=${searchInput}&type=artist`,
+    var searchSong = await fetch(
+      `${baseURI}/search?q=${searchInput}&type=track`,
       searchParam
     )
       .then((response) => response.json())
       .then((data) => {
-        setArtistData(data.artists.items[0]);
-        return data.artists.items[0].id; //^ Takes the first artist found
-      }).catch(response => {
+        console.log(data);
+        setSong(data.tracks.items[0]);
 
-      })
-
-    // ^ Get request with artist ID for all of the artists' albums
-    var albums = await fetch(
-      `${baseURI}/artists/${artistID}/albums?include_groups=album&market=US&limit=40`,
-      searchParam
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setAlbums(data.items);
-      });
-
-    //^ GET Related Artists
-    var relatedArtists = await fetch(
-      `${baseURI}/artists/${artistID}/related-artists`,
-      searchParam
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setRelatedArtists(data.artists);
+        const simSongs = data.tracks.items.filter(myFunction);
+        function myFunction(value, index, array) {
+          return index > 0;
+        }
+        console.log(simSongs);
+        setOtherSongs(simSongs);
       });
   }
   //^ <<<<<<<<<<<<<<<<<<<<<<<<<<<< end of search() function
-  console.log(relatedArtists);
+  console.log(song);
 
   return (
-    <Container>
+    <Container  className="margin-bottom-55px">
       <div>
         <h1 className="brand-font">Search</h1>
-        <InputGroup className="mb-3" size="lg">
+        <InputGroup className="input-group mb-1" size="sm">
           <FormControl
-            placeholder="Search for an artist..."
+            placeholder="Search..."
             type="input"
             onKeyPress={(event) => {
-              if (event.key == "Enter") {
+              if (event.key === "Enter") {
                 search();
               }
             }}
@@ -112,73 +87,55 @@ function ArtistSearch() {
           <Button onClick={search}>Search</Button>
         </InputGroup>
       </div>
-      {/* Display the searched Artist Image and Name */}
-      <div>
-        {artistData != "" && (
-          <div className="mx-auto">
-            <h2>{artistData && artistData.name}</h2>
-            <div>
-              <img
-                src={artistData.images[0].url}
-                className="artist-image fluid rounded-circle"
-              />
+      <div className="">
+        {song != "" && (
+          <div className="song-info d-flex flex-column">
+            <h2 className="brand-font h1 mx-3">Top Result</h2>
+            <div className="m-3 d-inline-flex flex-row">
+              <div>                
+                <div>
+                  <img
+                    src={song && song.album.images[0].url}
+                    className="top-result-album-image fluid"
+                  />
+                </div>
+              </div>
+              <div className="song-info-text">
+                <h2>{song && song.name}</h2>
+                <p>by {song.artists[0].name}</p>
+                <p>from the album {song.album.name}</p>
+              </div>
             </div>
-
-            <p className="brand-font h4 pt-5 pb-2">
-              Here are some artists similar to {artistData.name}
-            </p>
-            <Row className="mx-2 row col-md-4 col-5">
-              {relatedArtists.map((artist, i) => {
-                return (
-                  <Figure key={i} className="text-center figure">
-                    <div className="related-artists-img-container">
-                      <img
-                        alt="${artist.name} profile picture"
-                        src={artist.images[0].url}
-                        className="related-artists-img fluid rounded-circle"
-                      />
-                    </div>
-
-                    <Figure.Caption>{artist.name}</Figure.Caption>
-                  </Figure>
-                );
-              })}
-            </Row>
           </div>
         )}
       </div>
-
-      <div>
-        {albums != "" && (
-          <div>
-            <p className="brand-font pt-5 pb-2 h4">
-              Check out these albums from {artistData.name}
-            </p>
-            <Row className="mx-2 row row-cols-6">
-              {albums.map((album, i) => {
-                return (
-                  <Card className="card border-light mb-3">
-                    <Card.Img src={album.images[0].url} />
-                    <Card.Body>
-                      <Card.Title className="small">{album.name}</Card.Title>
-                      <Card.Text>
-                        {album.release_date.substring(0, 4)}
-                      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <Card.Link href={album.external_urls.spotify}>
-                        Listen Now
-                      </Card.Link>
-                    </Card.Footer>
-                  </Card>
-                );
-              })}
-            </Row>
-          </div>
-        )}
-      </div>
+      {/* Display More Songs */}  
+      {song != "" &&(
+        <div>
+        <h2 className="brand-font h4 mx-3">More Songs</h2>
+          <ListGroup className="mt-3">
+            {otherSongs.map((song, i) => {
+              return (
+                <ListGroup.Item className=" similar-song-info d-flex">
+                  <div>
+                    <img
+                      src={song && song.album.images[0].url}
+                      className="song-album-image fluid"
+                    />
+                  </div>
+                  <div className="song-info-text">
+                    <h2 className="h6">{song && song.name}</h2>
+                    <p>by {song.artists[0].name}</p>
+                    <p>from the album {song.album.name}</p>
+                  </div>
+                </ListGroup.Item>
+              );
+            })}
+          </ListGroup>
+        </div>
+      )}          
     </Container>
   );
 }
 
-export default ArtistSearch;
+export default Search;

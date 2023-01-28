@@ -7,16 +7,16 @@ import HeroImage from "../images/hero.gif";
 
 function Home() {
   return (
-    <Container>
+    <Container className="margin-bottom-55px">
       <div className="home full-page">
         <div className="home-header">
           <h2 className="brand-font">Welcome to PlayFit</h2>
         </div>
         <div className="home-body">
-          <p className="text_block">
+          <p className="text-block">
           Here at PlayFit you can search for your favorite artists and exercises in one app! Tracking features are on their way! For now enjoy discovering your favorite music and motions!
           </p>
-          <img src={HeroImage} alt="Image of a woman listening to music and exercising." className="hero_img" />
+          <img src={HeroImage} alt="Image of a woman listening to music and exercising." className="hero-img" />
           
         </div>
       </div>

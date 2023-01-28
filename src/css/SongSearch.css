@@ -1,24 +1,66 @@
 /*^ Song Search ****************************************************/
 .top-result-album-image {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 5px;
+}
+.song-album-image {
+  width: 100px;
+  height: 100px;
+}
+.artist-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.image {
+  width: 300px;
+}
+.song-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.song-info-text {
+  padding-left: 10px;
+}
+
+.more-songs-info {
+  background-color: transparent;
+  color: #BEDCFE;
+  border: none;
+}
+
+.type {
+  text-transform: uppercase;
+  color: #7e7e7e;
+  font-weight: 100;
+  font-size: 12px;
+}
+
+.test {
+  outline: 5px solid yellow;
+}
+
+@media only screen and (max-width: 767px) {
+  .more-songs-info {
+    flex-direction: column;
+  }
+
+  
+}
+
+
+@media only screen and (max-width: 540px) {
+  .top-result {
+    
+  }
+
+  .top-result-album-image {
+    width: 85vw;
+    height: auto;
   }
   .song-album-image {
-    width: 100px;
-    height: 100px;
+    width: 75vw;
+    height: auto;
   }
-  .artist-text {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  .image {
-    width: 300px;
-  }
-  .song-info {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .song-info-text {
-    padding-left: 10px;
-  }
+}
