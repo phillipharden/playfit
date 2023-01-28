@@ -16,9 +16,6 @@ const Sidebar = (props) => {
         <Link to="/Home" className="sidebar-link">
           <AiFillHome className="sidebar-icon" /> Home
         </Link>
-        <Link to="/Search" className="sidebar-link">
-          <FaSearch className="sidebar-icon" /> Search 
-        </Link>
         <Link to="/ArtistSearch" className="sidebar-link">
           <CgProfile className="sidebar-icon" /> Search Artist
         </Link>

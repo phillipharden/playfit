@@ -13,9 +13,6 @@ const FooterNav = () => {
         <Link to="/Home" className="footer-nav-link">
           <AiFillHome className="footer-nav-icon" /><p className="footer-nav-text">Home</p>
         </Link>
-        <Link to="/Search" className="footer-nav-link">
-          <FaSearch className="footer-nav-icon" /><p className="footer-nav-text">Search</p>
-        </Link>
         <Link to="/ArtistSearch" className="footer-nav-link">
           <CgProfile className="footer-nav-icon" /><p className="footer-nav-text">Search Artist</p>
         </Link>
