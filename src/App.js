@@ -34,7 +34,7 @@ function App() {
 
           <div className="body">
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
               <Route path="/ArtistSearch" element={<ArtistSearch />} />
               <Route path="/AlbumSearch" element={<AlbumSearch />} />
