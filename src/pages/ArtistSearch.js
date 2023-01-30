@@ -160,7 +160,7 @@ function ArtistSearch() {
         )}
       </div>
 
-      {/* <div>
+      <div>
         {albums != "" && (
           <div>
             <p className="text-center brand-font pt-5 pb-2 h4 my-3">
@@ -186,7 +186,7 @@ function ArtistSearch() {
             </Row>
           </div>
         )}
-      </div> */}
+      </div>
     </Container>
   );
 }
