@@ -1,12 +1,12 @@
 /*^ Song Search ****************************************************/
 .top-result-album-image {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   margin-bottom: 5px;
 }
 .song-album-image {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 }
 .artist-text {
   font-size: 20px;
@@ -26,13 +26,13 @@
 
 .more-songs-info {
   background-color: transparent;
-  color: #BEDCFE;
+  color: #9FFFCB;
   border: none;
 }
 
 .type {
   text-transform: uppercase;
-  color: #7e7e7e;
+  color: #BEDCFE;
   font-weight: 100;
   font-size: 12px;
 }
@@ -42,7 +42,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .more-songs-info {
+  .song-info-container {
     flex-direction: column;
   }
 
@@ -64,3 +64,10 @@
     height: auto;
   }
 }
+
+
+
+
+
+
+

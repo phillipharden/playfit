@@ -14,13 +14,13 @@ const FooterNav = () => {
           <AiFillHome className="footer-nav-icon" /><p className="footer-nav-text">Home</p>
         </Link>
         <Link to="/ArtistSearch" className="footer-nav-link">
-          <CgProfile className="footer-nav-icon" /><p className="footer-nav-text">Search Artist</p>
+          <CgProfile className="footer-nav-icon" /><p className="footer-nav-text">Artists</p>
         </Link>
         <Link to="/AlbumSearch" className="footer-nav-link">
-          <MdAlbum className="footer-nav-icon" /><p className="footer-nav-text">Search Album</p>
+          <MdAlbum className="footer-nav-icon" /><p className="footer-nav-text">Albums</p>
         </Link>
         <Link to="/SongSearch" className="footer-nav-link">
-          <FaMusic className="footer-nav-icon" /><p className="footer-nav-text">Search Song</p>
+          <FaMusic className="footer-nav-icon" /><p className="footer-nav-text">Songs</p>
         </Link>
         <Link to="/Exercises" className="footer-nav-link">
           <FaDumbbell className="footer-nav-icon" /><p className="footer-nav-text">Exercises</p>

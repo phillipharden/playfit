@@ -11,8 +11,9 @@ const Sidebar = (props) => {
     <div className="sidebar">
       <div className="sidebar-body">
         <div className="sidebar-logo-container">
-          <img src={props.ImgUrl} alt={props.ImgAlt} className="sidebar-logo" />
+          <img src={props.ImgUrl} alt={props.ImgAlt} className="sidebar-logo" />     
         </div>
+        <h1 className="brand-font m-3">{props.Title}</h1>
         <Link to="/Home" className="sidebar-link">
           <AiFillHome className="sidebar-icon" /> Home
         </Link>

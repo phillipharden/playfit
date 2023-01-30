@@ -12,11 +12,12 @@ import { useState, useEffect } from "react";
 import { fetchData, searchParam } from "../utils/fetchData";
 import "../css/Exercises.css";
 import { FaSearch } from "react-icons/fa";
+import ErrorMessage from "../components/ErrorMessage";
 
 function Exercises() {
   const [searchInput, setSearchInput] = useState("");
   const [exercises, setExercises] = useState([]);
-  const [bodyParts, setBodyParts] = useState([]);
+  const [noResultsFound, setNoResultsFound] = useState(false);
 
   async function handleSearch() {
     if (searchInput) {
@@ -34,15 +35,20 @@ function Exercises() {
           item.bodyPart.toLowerCase().includes(searchInput)
       );
 
-      setExercises(searchedExercises);
-      console.log(exercises);
+      if(searchedExercises == "") {
+        setNoResultsFound(true);
+      } 
+      if(searchedExercises != "") {
+        setNoResultsFound(false);
+      } 
+      setExercises(searchedExercises);     
     }
   }
-
+  console.log(exercises);
   return (
-    <Container className="margin-bottom-55px">
+    <Container className="margin-bottom-custom">
       <h1 className="brand-font">Exercises</h1>
-      <InputGroup className="input-group mb-1" size="sm">
+      <InputGroup className="input-group my-3" size="sm">
         <FormControl
         className="form"
           placeholder="Search for an exercise..."
@@ -56,14 +62,16 @@ function Exercises() {
         />
         <Button className="search-button" onClick={handleSearch}><FaSearch className="search-icon" /></Button>
       </InputGroup>
-
+       { noResultsFound && <ErrorMessage 
+      Message="No results found, please try again."
+      /> }  
       {exercises != "" && (
         <div>
           <p>Here are the results for {searchInput}...</p>
           <Row>
             {exercises.map((exercise, i) => {
               return (
-                <div className="card-container col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+                <div className="card-container col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2" key={i}>
                   <Card className="card-style h-100">
                     <Card.Img src={exercise.gifUrl} alt="Visual instructions on how to perform the exercise" />
                     <Card.Body className="card-body">

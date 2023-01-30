@@ -78,10 +78,10 @@ function AlbumSearch() {
   console.log(tracks);
 
   return (
-    <Container className="margin-bottom-55px">
+    <Container className="margin-bottom-custom">
       <div>
         <h1 className="brand-font">Search by Album</h1>
-        <InputGroup className="input-group mb-1" size="sm">
+        <InputGroup className="input-group my-3" size="sm">
           <FormControl
             placeholder="Search for an album..."
             type="input"
@@ -106,15 +106,15 @@ function AlbumSearch() {
               src={album && album.images[0].url}
               className="album-image"
             />
-            <p className="h3 mt-1">{album && album.name}</p>
+            <p className="h3 my-3">{album && album.name}</p>
             <p>{album.artists[0].name}</p>
           </div>
         )}
       </div>
       {album != "" && (
-        <div>
+        <div className="mb-6">
           <h2 className="brand-font h4">Album Tracks</h2>
-          <ListGroup className="mt-3">
+          <ListGroup className="my-3">
             {tracks.map((track, i) => {
               return (
                 <ListGroup.Item className="track-list">

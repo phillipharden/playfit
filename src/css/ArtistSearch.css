@@ -27,6 +27,10 @@
   transform: translate(-50%, -50%);
 }
 
+.artist-name {
+  color: #9FFFCB;
+}
+
 .album-card {
   background-color: transparent;
   border: none;

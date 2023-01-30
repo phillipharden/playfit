@@ -1,15 +1,10 @@
 .card-style {
-  box-shadow: 2px 2px 10px gray;
+  box-shadow: 1px 1px 5px #000000;
   color: #9FFFCB;  
   background-color: transparent;
+  border: none;
 }
 
-/* .card-title {
-  font-size: 16px;
-}
-.card-text {
-  font-size: 12px;
-} */
 
 .card-container {
   padding: 5px;
