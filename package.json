@@ -1,6 +1,5 @@
 {
-  "homepage": "https://phillipharden.github.io/spotify-api",
-  "name": "spotify-api",
+  "name": "PlayFit",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
