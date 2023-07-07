@@ -36,7 +36,7 @@ function App() {
         <div className="app-body">
           <div className="container-lg">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route exact path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
               <Route path="/ArtistSearch" element={<ArtistSearch />} />
               <Route path="/AlbumSearch" element={<AlbumSearch />} />
